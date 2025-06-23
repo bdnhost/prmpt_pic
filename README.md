@@ -1,4 +1,4 @@
-# AI Prompt Generator (מחולל פרומפטים לתמונות AI)
+# AI Prompt Generator
 
 A tool for creating structured prompts for AI image generation using the 8 Elements Framework.
 
@@ -8,14 +8,14 @@ This project provides tools for creating high-quality prompts for AI image gener
 
 The 8 Elements are:
 
-1. **Subject** - What/who is in the image
-2. **Composition** - How it's arranged
-3. **Style** - What look/style
-4. **Lighting** - What kind of light
-5. **Color** - What colors
-6. **Mood** - What feeling
-7. **Details** - What to include/exclude
-8. **Context** - What it's for
+1.  **Subject** - What/who is in the image
+2.  **Composition** - How it's arranged
+3.  **Style** - What look/style
+4.  **Lighting** - What kind of light
+5.  **Color** - What colors
+6.  **Mood** - What feeling
+7.  **Details** - What to include/exclude
+8.  **Context** - What it's for
 
 ## Available Versions
 
@@ -23,7 +23,7 @@ This project includes multiple implementations:
 
 ### 1. Full Version with OpenAI Integration
 
-- **Files**: `ai_prompt_generator.py` and `gui_prompt_generator.py`
+- **Files**: `ai_prompt_generator_pkg/ai_prompt_generator.py` and `ai_prompt_generator_pkg/gui_prompt_generator.py`
 - **Features**:
   - Create basic prompts using the 8 Elements Framework
   - Enhance prompts using AI (OpenAI's GPT-4)
@@ -35,7 +35,7 @@ This project includes multiple implementations:
 
 ### 2. Simple Version (No API Required)
 
-- **Files**: `simple_prompt_generator.py` (GUI) and `cli_prompt_generator.py` (Command Line)
+- **Files**: `ai_prompt_generator_pkg/simple_prompt_generator.py` (GUI) and `ai_prompt_generator_pkg/cli_prompt_generator.py` (Command Line)
 - **Features**:
   - Create basic prompts using the 8 Elements Framework
   - Save and load templates
@@ -110,19 +110,19 @@ Simply open the `prompt_generator.html` file in any web browser.
 
 ## Tips for Better Prompts
 
-1. **Be Specific**: The more specific the details, the better the result
+1.  **Be Specific**: The more specific the details, the better the result
 
-   - Bad: "a dog"
-   - Good: "a golden retriever puppy, 3 months old, sitting on green grass"
+    - Bad: "a dog"
+    - Good: "a golden retriever puppy, 3 months old, sitting on green grass"
 
-2. **Use Quality Keywords**:
-   "high quality", "detailed", "professional", "8k resolution"
+2.  **Use Quality Keywords**:
+    "high quality", "detailed", "professional", "8k resolution"
 
-3. **Use Negative Prompts** (in enhanced prompts):
-   "no blurry, no low quality, no distorted"
+3.  **Use Negative Prompts** (in enhanced prompts):
+    "no blurry, no low quality, no distorted"
 
-4. **Context Matters**:
-   "for Instagram post", "for corporate website", "for children's book"
+4.  **Context Matters**:
+    "for Instagram post", "for corporate website", "for children's book"
 
 ## Getting Started
 
