@@ -1,0 +1,214 @@
+# requirements.txt - תלויות הפרויקט
+openai>=1.30.0
+pillow>=9.0.0
+requests>=2.28.0
+tkinter  # כלול בדרך כלל ב-Python
+enum34>=1.1.10;python_version<"3.4"
+
+# התקנה:
+# pip install -r requirements.txt
+
+# ====================================
+# דוגמאות שימוש מפורטות
+# ====================================
+
+# 1. שימוש בשורת הפקודה
+# ===========================
+
+# דוגמא בסיסית:
+python ai_prompt_generator.py --subject "חתול פרסי" --style "professional photography" --enhance
+
+# יצירת תמונה מיידית:
+python ai_prompt_generator.py --subject "לוגו חברת טכנולוגיה" --style "minimalist" --colors "כחול ולבן" --generate
+
+# שמירת תבנית:
+python ai_prompt_generator.py --subject "נוף הרים" --style "oil painting" --mood "calm" --save-template "mountain_template.json"
+
+# טעינת תבנית:
+python ai_prompt_generator.py --load-template "mountain_template.json" --enhance --generate
+
+# ====================================
+# 2. שימוש בקוד Python
+# ===========================
+
+from ai_prompt_generator import AIImagePromptGenerator, PromptElements
+
+# התחברות למערכת
+generator = AIImagePromptGenerator(api_key="your-openai-api-key")
+
+# דוגמא 1: יצירת פרומפט פשוט
+elements = PromptElements(
+    subject="כלב גולדן רטריבר",
+    style="cartoon",
+    mood="playful",
+    lighting="bright and airy"
+)
+
+basic_prompt = generator.create_basic_prompt(elements)
+print(f"פרומפט בסיסי: {basic_prompt}")
+
+enhanced_prompt = generator.enhance_prompt_with_ai(basic_prompt, "children's book")
+print(f"פרומפט משופר: {enhanced_prompt}")
+
+# יצירת התמונה
+image_url = generator.generate_image(enhanced_prompt)
+print(f"תמונה נוצרה: {image_url}")
+
+# ====================================
+# דוגמא 2: קמפיין שיווקי מקצועי
+# ===========================
+
+# יצירת סדרת תמונות לעסק
+campaign_prompts = generator.create_campaign_prompts(
+    business_type="בית קפה אקולוגי",
+    brand_colors=["#2E8B57", "#DEB887", "#F5DEB3"]
+)
+
+for image_type, prompt in campaign_prompts.items():
+    print(f"\n{image_type}:")
+    print(prompt)
+    
+    # יצירת התמונה
+    image_url = generator.generate_image(prompt)
+    print(f"URL: {image_url}")
+
+# ====================================
+# דוגמא 3: הנדסה לאחור
+# ===========================
+
+# ניתוח תמונה קיימת
+image_description = """
+תמונה של חתול לבן יושב על ספה כחולה בסלון מעוצב.
+האור רך ובא מחלון, הצבעים חמים ונעימים.
+הסגנון מקצועי וביתי.
+"""
+
+elements = generator.reverse_engineer_prompt(image_description)
+print("אלמנטים שחולצו:")
+print(f"נושא: {elements.subject}")
+print(f"סגנון: {elements.style}")
+print(f"תאורה: {elements.lighting}")
+# ... וכו'
+
+# שימוש באלמנטים ליצירת תמונה דומה
+recreated_prompt = generator.create_basic_prompt(elements)
+enhanced_recreated = generator.enhance_prompt_with_ai(recreated_prompt)
+
+# ====================================
+# דוגמא 4: עבודה עם תבניות
+# ===========================
+
+# יצירת תבנית למותג
+brand_template = PromptElements(
+    subject="[TO_REPLACE]",  # ימולא לפי הצורך
+    style="modern minimalist",
+    lighting="clean studio lighting",
+    color="brand colors: #FF6B6B, #4ECDC4",
+    mood="professional yet friendly",
+    details="high quality, clean, crisp",
+    context="social media marketing"
+)
+
+# שמירת התבנית
+generator.save_elements_template(brand_template, "brand_template.json")
+
+# שימוש בתבנית
+loaded_template = generator.load_elements_template("brand_template.json")
+loaded_template.subject = "מוצר חדש לחברה"
+
+final_prompt = generator.create_basic_prompt(loaded_template)
+enhanced_final = generator.enhance_prompt_with_ai(final_prompt, "product marketing")
+
+# ====================================
+# 3. הפעלת הממשק הגרפי
+# ===========================
+
+# הפעלה פשוטה:
+python gui_prompt_generator.py
+
+# או עם הגדרת מפתח API מראש:
+# export OPENAI_API_KEY="your-api-key"
+# python gui_prompt_generator.py
+
+# ====================================
+# 4. דוגמאות מתקדמות
+# ===========================
+
+# יצירת סדרת תמונות לסיפור
+story_elements = [
+    PromptElements(
+        subject="ילדה קטנה עם כלב",
+        composition="wide angle",
+        style="children's book illustration",
+        mood="adventurous",
+        details="יער בפרטי רקע",
+        context="פתיחת סיפור"
+    ),
+    PromptElements(
+        subject="אותה ילדה מגלה מערה מסתורית",
+        composition="dramatic low angle",
+        style="children's book illustration",
+        mood="mysterious yet exciting",
+        details="מערה נוצצת עם אורות קסומים",
+        context="נקודת מפנה בסיפור"
+    ),
+    PromptElements(
+        subject="הילדה והכלב חוזרים הביתה בשקיעה",
+        composition="rule of thirds",
+        style="children's book illustration",
+        mood="warm and satisfied",
+        details="שקיעה זהובה, בית רחוק",
+        context="סיום מרגש"
+    )
+]
+
+# יצירת כל התמונות
+story_images = []
+for i, elements in enumerate(story_elements):
+    prompt = generator.create_basic_prompt(elements)
+    enhanced = generator.enhance_prompt_with_ai(prompt, "children's storybook")
+    image_url = generator.generate_image(enhanced)
+    story_images.append(image_url)
+    print(f"תמונה {i+1} נוצרה: {image_url}")
+
+# ====================================
+# 5. טיפים לשימוש מיטבי
+# ===========================
+
+"""
+טיפים חשובים:
+
+1. ספציפיות: ככל שהפרטים ספציפיים יותר, התוצאה טובה יותר
+   רע: "כלב"
+   טוב: "כלב גולדן רטריבר, גור בן 3 חודשים, יושב על דשא ירוק"
+
+2. שילוב מילות מפתח איכות:
+   "high quality", "detailed", "professional", "8k resolution"
+
+3. שימוש ב-negative prompts (בפרומפט המשופר):
+   "no blurry, no low quality, no distorted"
+
+4. הקשר חשוב:
+   "for Instagram post", "for corporate website", "for children's book"
+
+5. ניסוי וטעייה:
+   השתמשו בעריכה איטרטיבית - התחילו מפשוט ושפרו בהדרגה
+"""
+
+# ====================================
+# 6. פתרון בעיות נפוצות
+# ===========================
+
+# בעיה: תמונות לא עקביות
+# פתרון: הוסיפו פרטים ספציפיים יותר ושמרו על אותם פרמטרים
+
+# בעיה: איכות נמוכה
+# פתרון: הוסיפו מילות מפתח איכות ושפרו עם AI
+
+# בעיה: לא מקבלים מה שרוצים
+# פתרון: השתמשו בהנדסה לאחור מתמונות שאוהבים
+
+# בעיה: שגיאות API
+# פתרון: בדקו את המפתח ואת חיבור האינטרנט
+
+print("המערכת מוכנה לשימוש! 🎨✨")

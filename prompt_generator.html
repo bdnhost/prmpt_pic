@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מחולל פרומפטים פשוט ליצירת תמונות</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        h1 {
+            margin: 0;
+        }
+        .elements-container {
+            background-color: white;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .elements-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .element-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #34495e;
+        }
+        label.required {
+            color: #e74c3c;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        .buttons {
+            margin: 20px 0;
+            display: flex;
+            gap: 10px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .examples {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .examples button {
+            background-color: #95a5a6;
+        }
+        .examples button:hover {
+            background-color: #7f8c8d;
+        }
+        .output-container {
+            background-color: white;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            resize: vertical;
+        }
+        .explanation {
+            background-color: white;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .status-bar {
+            background-color: #ecf0f1;
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🎨 מחולל פרומפטים פשוט ליצירת תמונות</h1>
+    </header>
+    
+    <div class="container">
+        <div class="elements-container">
+            <h2>🎯 מסגרת 8 האלמנטים</h2>
+            
+            <div class="elements-grid">
+                <div>
+                    <div class="element-group">
+                        <label class="required">1. נושא (Subject) *</label>
+                        <input type="text" id="subject" placeholder="מה/מי בתמונה">
+                    </div>
+                    
+                    <div class="element-group">
+                        <label>2. קומפוזיציה (Composition)</label>
+                        <select id="composition" title="בחירת קומפוזיציה">
+                            <option value="">בחר קומפוזיציה</option>
+                            <option value="close-up portrait">close-up portrait</option>
+                            <option value="wide angle">wide angle</option>
+                            <option value="bird's eye view">bird's eye view</option>
+                            <option value="low angle">low angle</option>
+                            <option value="symmetrical">symmetrical</option>
+                            <option value="rule of thirds">rule of thirds</option>
+                        </select>
+                    </div>
+                    
+                    <div class="element-group">
+                        <label>3. סגנון (Style)</label>
+                        <select id="style" title="בחירת סגנון">
+                            <option value="">בחר סגנון</option>
+                            <option value="realistic">realistic</option>
+                            <option value="cartoon">cartoon</option>
+                            <option value="watercolor">watercolor</option>
+                            <option value="oil painting">oil painting</option>
+                            <option value="sketch">sketch</option>
+                            <option value="3D render">3D render</option>
+                            <option value="minimalist">minimalist</option>
+                            <option value="vintage">vintage</option>
+                            <option value="modern">modern</option>
+                            <option value="professional photography">professional photography</option>
+                        </select>
+                    </div>
+                    
+                    <div class="element-group">
+                        <label>4. תאורה (Lighting)</label>
+                        <select id="lighting" title="בחירת תאורה">
+                            <option value="">בחר תאורה</option>
+                            <option value="soft morning light">soft morning light</option>
+                            <option value="dramatic sunset">dramatic sunset</option>
+                            <option value="studio lighting">studio lighting</option>
+                            <option value="natural daylight">natural daylight</option>
+                            <option value="moody shadows">moody shadows</option>
+                            <option value="bright and airy">bright and airy</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="element-group">
+                        <label>5. צבעים (Colors)</label>
+                        <input type="text" id="colors" placeholder="אילו צבעים">
+                    </div>
+                    
+                    <div class="element-group">
+                        <label>6. מצב רוח (Mood)</label>
+                        <select id="mood" title="בחירת מצב רוח">
+                            <option value="">בחר מצב רוח</option>
+                            <option value="energetic">energetic</option>
+                            <option value="calm">calm</option>
+                            <option value="mysterious">mysterious</option>
+                            <option value="professional">professional</option>
+                            <option value="playful">playful</option>
+                            <option value="elegant">elegant</option>
+                            <option value="rustic">rustic</option>
+                            <option value="futuristic">futuristic</option>
+                        </select>
+                    </div>
+                    
+                    <div class="element-group">
+                        <label>7. פרטים (Details)</label>
+                        <input type="text" id="details" placeholder="פרטים לכלול/להשמיט">
+                    </div>
+                    
+                    <div class="element-group">
+                        <label>8. הקשר (Context)</label>
+                        <input type="text" id="context" placeholder="למה זה מיועד">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="buttons">
+                <button onclick="generatePrompt()">🔄 צור פרומפט</button>
+                <button onclick="copyToClipboard()">📋 העתק לקליפבורד</button>
+                <button onclick="clearAll()">🗑️ נקה הכל</button>
+            </div>
+            
+            <div style="margin-top: 20px; padding: 10px; background-color: #e8f4f8; border-radius: 5px;">
+                <label style="font-weight: bold; display: block; margin-bottom: 10px;">דוגמאות מהירות:</label>
+                <div class="examples">
+                    <button onclick="loadExample('cat')" style="background-color: #e74c3c; font-size: 16px; padding: 10px 20px;">חתול</button>
+                    <button onclick="loadExample('logo')" style="background-color: #3498db; font-size: 16px; padding: 10px 20px;">לוגו</button>
+                    <button onclick="loadExample('landscape')" style="background-color: #2ecc71; font-size: 16px; padding: 10px 20px;">נוף</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="output-container">
+            <h2>📝 פרומפט</h2>
+            <textarea id="prompt-output" readonly title="פרומפט שנוצר" aria-label="פרומפט שנוצר"></textarea>
+        </div>
+        
+        <div class="explanation">
+            <h2>ℹ️ הסבר</h2>
+            <p>מחולל הפרומפטים הפשוט מאפשר לך ליצור פרומפטים מובנים ליצירת תמונות AI.</p>
+            
+            <h3>איך להשתמש:</h3>
+            <ol>
+                <li>מלא את השדות של 8 האלמנטים (לפחות את שדה הנושא)</li>
+                <li>לחץ על "צור פרומפט" כדי ליצור פרומפט מובנה</li>
+                <li>העתק את הפרומפט והשתמש בו במחולל תמונות AI כמו DALL-E, Midjourney או Stable Diffusion</li>
+            </ol>
+            
+            <h3>טיפים:</h3>
+            <ul>
+                <li>ככל שהפרטים ספציפיים יותר, התוצאה טובה יותר</li>
+                <li>השתמש במילות מפתח איכות כמו "high quality", "detailed", "professional"</li>
+                <li>שמור תבניות שאתה אוהב לשימוש חוזר</li>
+            </ul>
+        </div>
+        
+        <div class="status-bar" id="status">מוכן לשימוש</div>
+    </div>
+    
+    <script>
+        // דוגמאות מוכנות
+        const examples = {
+            cat: {
+                subject: "חתול פרסי לבן",
+                composition: "close-up portrait",
+                style: "professional photography",
+                lighting: "soft morning light",
+                colors: "גוונים חמים",
+                mood: "calm",
+                details: "עיניים כחולות, פרווה רכה",
+                context: "צילום מקצועי"
+            },
+            logo: {
+                subject: "לוגו מינימליסטי",
+                composition: "symmetrical",
+                style: "minimalist",
+                lighting: "clean lighting",
+                colors: "כחול וצבעי אמון",
+                mood: "professional",
+                details: "פשוט וזכיר",
+                context: "מיתוג עסקי"
+            },
+            landscape: {
+                subject: "נוף הרים עם אגם",
+                composition: "wide angle",
+                style: "realistic",
+                lighting: "dramatic sunset",
+                colors: "צבעי זהב וכתום",
+                mood: "calm",
+                details: "השתקפויות במים",
+                context: "צילום טבע"
+            }
+        };
+        
+        // פונקציה ליצירת פרומפט
+        function generatePrompt() {
+            const subject = document.getElementById('subject').value.trim();
+            
+            if (!subject) {
+                setStatus("שגיאה: נא להזין לפחות נושא לתמונה", true);
+                return;
+            }
+            
+            const composition = document.getElementById('composition').value;
+            const style = document.getElementById('style').value;
+            const lighting = document.getElementById('lighting').value;
+            const colors = document.getElementById('colors').value.trim();
+            const mood = document.getElementById('mood').value;
+            const details = document.getElementById('details').value.trim();
+            const context = document.getElementById('context').value.trim();
+            
+            const promptParts = [];
+            
+            // נושא (חובה)
+            promptParts.push(subject);
+            
+            // קומפוזיציה
+            if (composition) {
+                promptParts.push(`composition: ${composition}`);
+            }
+            
+            // סגנון
+            if (style) {
+                promptParts.push(`style: ${style}`);
+            }
+            
+            // תאורה
+            if (lighting) {
+                promptParts.push(`lighting: ${lighting}`);
+            }
+            
+            // צבעים
+            if (colors) {
+                promptParts.push(`colors: ${colors}`);
+            }
+            
+            // מצב רוח
+            if (mood) {
+                promptParts.push(`mood: ${mood}`);
+            }
+            
+            // פרטים נוספים
+            if (details) {
+                promptParts.push(`details: ${details}`);
+            }
+            
+            // הקשר
+            if (context) {
+                promptParts.push(`for: ${context}`);
+            }
+            
+            // הוספת משפרי איכות
+            promptParts.push("high quality", "detailed", "professional");
+            
+            const prompt = promptParts.join(", ");
+            document.getElementById('prompt-output').value = prompt;
+            
+            setStatus("פרומפט נוצר בהצלחה");
+        }
+        
+        // פונקציה להעתקת הפרומפט ללוח
+        function copyToClipboard() {
+            const promptOutput = document.getElementById('prompt-output');
+            const prompt = promptOutput.value.trim();
+            
+            if (!prompt) {
+                setStatus("אין פרומפט להעתקה", true);
+                return;
+            }
+            
+            promptOutput.select();
+            document.execCommand('copy');
+            
+            setStatus("הפרומפט הועתק ללוח");
+        }
+        
+        // פונקציה לניקוי כל השדות
+        function clearAll() {
+            document.getElementById('subject').value = '';
+            document.getElementById('composition').value = '';
+            document.getElementById('style').value = '';
+            document.getElementById('lighting').value = '';
+            document.getElementById('colors').value = '';
+            document.getElementById('mood').value = '';
+            document.getElementById('details').value = '';
+            document.getElementById('context').value = '';
+            document.getElementById('prompt-output').value = '';
+            
+            setStatus("השדות נוקו");
+        }
+        
+        // פונקציה לטעינת דוגמא
+        function loadExample(exampleType) {
+            const example = examples[exampleType];
+            
+            if (example) {
+                document.getElementById('subject').value = example.subject;
+                document.getElementById('composition').value = example.composition;
+                document.getElementById('style').value = example.style;
+                document.getElementById('lighting').value = example.lighting;
+                document.getElementById('colors').value = example.colors;
+                document.getElementById('mood').value = example.mood;
+                document.getElementById('details').value = example.details;
+                document.getElementById('context').value = example.context;
+                
+                setStatus(`נטענה דוגמא: ${exampleType}`);
+            }
+        }
+        
+        // פונקציה לעדכון סטטוס
+        function setStatus(message, isError = false) {
+            const statusBar = document.getElementById('status');
+            statusBar.textContent = message;
+            
+            if (isError) {
+                statusBar.style.backgroundColor = '#f8d7da';
+                statusBar.style.color = '#721c24';
+            } else {
+                statusBar.style.backgroundColor = '#ecf0f1';
+                statusBar.style.color = '#000';
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+# requirements.txt - תלויות הפרויקט
+openai>=1.30.0
+pillow>=9.0.0
+requests>=2.28.0
+tkinter  # כלול בדרך כלל ב-Python
+enum34>=1.1.10;python_version<"3.4"
