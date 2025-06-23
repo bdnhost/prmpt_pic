@@ -1,129 +1,111 @@
-# AI Prompt Generator (מחולל פרומפטים לתמונות AI)
+**מחולל פרומפטים לבינה מלאכותית**
+כלי ליצירת פרומפטים מובנים ליצירת תמונות בעזרת בינה מלאכותית באמצעות מסגרת 8 האלמנטים.
 
-A tool for creating structured prompts for AI image generation using the 8 Elements Framework.
+**סקירת הפרויקט**
+הפרויקט מספק כלים ליצירת פרומפטים איכותיים לשירותי יצירת תמונות בבינה מלאכותית כמו DALL-E, Midjourney או Stable Diffusion. הוא משתמש ב"מסגרת 8 האלמנטים" כדי לבנות פרומפטים באופן שמייצר תוצאות טובות יותר.
 
-## Project Overview
+**8 האלמנטים הם:**
+1. **נושא** - מה/מי מופיע בתמונה
+2. **קומפוזיציה** - איך הכל מסודר
+3. **סגנון** - איזה מראה/סגנון
+4. **תאורה** - איזה סוג אור
+5. **צבעים** - אילו צבעים
+6. **מצב רוח** - איזה תחושה
+7. **פרטים** - מה לכלול/להוציא
+8. **הקשר** - למה זה מיועד
 
-This project provides tools for creating high-quality prompts for AI image generation services like DALL-E, Midjourney, or Stable Diffusion. It uses the "8 Elements Framework" to structure prompts in a way that produces better results.
+**גרסאות זמינות**
+הפרויקט כולל מספר יישומים:
 
-The 8 Elements are:
+**1. גרסה מלאה עם אינטגרציה של OpenAI**
+* **קבצים**: `ai_prompt_generator.py` ו-`gui_prompt_generator.py`
+* **תכונות**:
+   * יצירת פרומפטים בסיסיים באמצעות מסגרת 8 האלמנטים
+   * שיפור פרומפטים באמצעות בינה מלאכותית (GPT-4 של OpenAI)
+   * יצירת תמונות באמצעות DALL-E
+   * שמירה וטעינה של תבניות
+   * יצירת פרומפטים לקמפיינים שיווקיים
+   * הנדסה לאחור של פרומפטים מתיאורי תמונות
+   * ממשק גרפי
 
-1. **Subject** - What/who is in the image
-2. **Composition** - How it's arranged
-3. **Style** - What look/style
-4. **Lighting** - What kind of light
-5. **Color** - What colors
-6. **Mood** - What feeling
-7. **Details** - What to include/exclude
-8. **Context** - What it's for
+**2. גרסה פשוטה (ללא צורך ב-API)**
+* **קבצים**: `simple_prompt_generator.py` (ממשק גרפי) ו-`cli_prompt_generator.py` (שורת פקודה)
+* **תכונות**:
+   * יצירת פרומפטים בסיסיים באמצעות מסגרת 8 האלמנטים
+   * שמירה וטעינה של תבניות
+   * דוגמאות מוגדרות מראש
+   * ללא צורך במפתח API או תלויות חיצוניות
 
-## Available Versions
+**3. גרסת HTML**
+* **קובץ**: `prompt_generator.html`
+* **תכונות**:
+   * יישום טהור ב-HTML/JavaScript
+   * עובד בכל דפדפן
+   * ללא צורך בהתקנה או תלויות
+   * יצירת פרומפטים בסיסיים באמצעות מסגרת 8 האלמנטים
 
-This project includes multiple implementations:
-
-### 1. Full Version with OpenAI Integration
-
-- **Files**: `ai_prompt_generator.py` and `gui_prompt_generator.py`
-- **Features**:
-  - Create basic prompts using the 8 Elements Framework
-  - Enhance prompts using AI (OpenAI's GPT-4)
-  - Generate images using DALL-E
-  - Save and load templates
-  - Create campaign prompts for marketing
-  - Reverse engineer prompts from image descriptions
-  - GUI interface
-
-### 2. Simple Version (No API Required)
-
-- **Files**: `simple_prompt_generator.py` (GUI) and `cli_prompt_generator.py` (Command Line)
-- **Features**:
-  - Create basic prompts using the 8 Elements Framework
-  - Save and load templates
-  - Pre-defined examples
-  - No API key or external dependencies required
-
-### 3. HTML Version
-
-- **File**: `prompt_generator.html`
-- **Features**:
-  - Pure HTML/JavaScript implementation
-  - Works in any browser
-  - No installation or dependencies required
-  - Create basic prompts using the 8 Elements Framework
-
-## Requirements
-
-For the full version:
+**דרישות מערכת**
+עבור הגרסה המלאה:
 
 ```
 openai>=1.30.0
 pillow>=9.0.0
 requests>=2.28.0
-tkinter  # Usually included with Python
+tkinter  # בדרך כלל נכלל עם Python
 ```
 
-For the simple version:
+עבור הגרסה הפשוטה:
+* Python 3.6+ עם tkinter (לגרסת הממשק הגרפי)
+* ללא תלויות חיצוניות לגרסאות שורת הפקודה או HTML
 
-- Python 3.6+ with tkinter (for GUI version)
-- No external dependencies for CLI or HTML versions
+**דוגמאות שימוש**
+**ממשק שורת פקודה**
 
-## Usage Examples
+```
+# דוגמה בסיסית
+python ai_prompt_generator.py --subject "חתול פרסי" --style "צילום מקצועי" --enhance
 
-### Command Line Interface
+# יצירת תמונה מיידית
+python ai_prompt_generator.py --subject "לוגו חברת הייטק" --style "מינימליסטי" --colors "כחול ולבן" --generate
 
-```bash
-# Basic example
-python ai_prompt_generator.py --subject "Persian cat" --style "professional photography" --enhance
+# שמירת תבנית
+python ai_prompt_generator.py --subject "נוף הרים" --style "ציור שמן" --mood "רגוע" --save-template "mountain_template.json"
 
-# Generate image immediately
-python ai_prompt_generator.py --subject "Technology company logo" --style "minimalist" --colors "blue and white" --generate
-
-# Save template
-python ai_prompt_generator.py --subject "Mountain landscape" --style "oil painting" --mood "calm" --save-template "mountain_template.json"
-
-# Load template
+# טעינת תבנית
 python ai_prompt_generator.py --load-template "mountain_template.json" --enhance --generate
 ```
 
-### Simple CLI Version
+**גרסת שורת פקודה פשוטה**
 
-```bash
-# Basic example
-python cli_prompt_generator.py --subject "Persian cat" --style "professional photography"
+```
+# דוגמה בסיסית
+python cli_prompt_generator.py --subject "חתול פרסי" --style "צילום מקצועי"
 
-# Using a pre-defined example
+# שימוש בדוגמה מוגדרת מראש
 python cli_prompt_generator.py --example "cat"
 ```
 
-### GUI Versions
+**גרסאות ממשק גרפי**
+הריצו אחת מהפקודות הבאות:
 
-Run either of these commands:
-
-```bash
-python gui_prompt_generator.py  # Full version with OpenAI integration
-python simple_prompt_generator.py  # Simple version without API requirements
+```
+python gui_prompt_generator.py  # גרסה מלאה עם אינטגרציה של OpenAI
+python simple_prompt_generator.py  # גרסה פשוטה ללא צורך ב-API
 ```
 
-### HTML Version
+**גרסת HTML**
+פשוט פתחו את הקובץ `prompt_generator.html` בכל דפדפן.
 
-Simply open the `prompt_generator.html` file in any web browser.
+**טיפים לפרומפטים טובים יותר**
+1. **היו ספציפיים**: ככל שהפרטים יותר ספציפיים, התוצאה תהיה טובה יותר
+   * רע: "כלב"
+   * טוב: "גור גולדן רטריבר, בן 3 חודשים, יושב על דשא ירוק"
 
-## Tips for Better Prompts
+2. **השתמשו במילות מפתח איכותיות**: "איכות גבוהה", "מפורט", "מקצועי", "רזולוציה 8k"
 
-1. **Be Specific**: The more specific the details, the better the result
+3. **השתמשו בפרומפטים שליליים** (בפרומפטים משופרים): "לא מטושטש, לא איכות נמוכה, לא מעוות"
 
-   - Bad: "a dog"
-   - Good: "a golden retriever puppy, 3 months old, sitting on green grass"
+4. **ההקשר חשוב**: "לפוסט באינסטגרם", "לאתר חברה", "לספר ילדים"
 
-2. **Use Quality Keywords**:
-   "high quality", "detailed", "professional", "8k resolution"
-
-3. **Use Negative Prompts** (in enhanced prompts):
-   "no blurry, no low quality, no distorted"
-
-4. **Context Matters**:
-   "for Instagram post", "for corporate website", "for children's book"
-
-## License
-
-This project is available for personal and commercial use.
+**רישיון**
+הפרויקט זמין לשימוש אישי ומסחרי.
