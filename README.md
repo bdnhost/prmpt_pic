@@ -73,26 +73,26 @@ For the simple version:
 
 ```bash
 # Basic example
-python ai_prompt_generator.py --subject "Persian cat" --style "professional photography" --enhance
+python ai_prompt_generator_pkg/ai_prompt_generator.py --subject "Persian cat" --style "professional photography" --enhance
 
 # Generate image immediately
-python ai_prompt_generator.py --subject "Technology company logo" --style "minimalist" --colors "blue and white" --generate
+python ai_prompt_generator_pkg/ai_prompt_generator.py --subject "Technology company logo" --style "minimalist" --colors "blue and white" --generate
 
 # Save template
-python ai_prompt_generator.py --subject "Mountain landscape" --style "oil painting" --mood "calm" --save-template "mountain_template.json"
+python ai_prompt_generator_pkg/ai_prompt_generator.py --subject "Mountain landscape" --style "oil painting" --mood "calm" --save-template "mountain_template.json"
 
 # Load template
-python ai_prompt_generator.py --load-template "mountain_template.json" --enhance --generate
+python ai_prompt_generator_pkg/ai_prompt_generator.py --load-template "mountain_template.json" --enhance --generate
 ```
 
 ### Simple CLI Version
 
 ```bash
 # Basic example
-python cli_prompt_generator.py --subject "Persian cat" --style "professional photography"
+python ai_prompt_generator_pkg/cli_prompt_generator.py --subject "Persian cat" --style "professional photography"
 
 # Using a pre-defined example
-python cli_prompt_generator.py --example "cat"
+python ai_prompt_generator_pkg/cli_prompt_generator.py --example "cat"
 ```
 
 ### GUI Versions
@@ -100,8 +100,8 @@ python cli_prompt_generator.py --example "cat"
 Run either of these commands:
 
 ```bash
-python gui_prompt_generator.py  # Full version with OpenAI integration
-python simple_prompt_generator.py  # Simple version without API requirements
+python ai_prompt_generator_pkg/gui_prompt_generator.py  # Full version with OpenAI integration
+python ai_prompt_generator_pkg/simple_prompt_generator.py  # Simple version without API requirements
 ```
 
 ### HTML Version
@@ -123,6 +123,36 @@ Simply open the `prompt_generator.html` file in any web browser.
 
 4. **Context Matters**:
    "for Instagram post", "for corporate website", "for children's book"
+
+## Getting Started
+
+To set up a virtual environment:
+
+1.  Create a virtual environment:
+
+    ```bash
+    python -m venv venv
+    ```
+
+2.  Activate the virtual environment:
+
+    - On Windows:
+
+      ```bash
+      venv\Scripts\activate
+      ```
+
+    - On macOS and Linux:
+
+      ```bash
+      source venv/bin/activate
+      ```
+
+3.  Install the dependencies:
+
+    ```bash
+    pip install -r requirements.txt
+    ```
 
 ## License
 
